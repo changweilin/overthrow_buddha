@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Warfare Intel HUD</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hud-container">
+        <!-- Scanline Overlay -->
+        <div class="scanlines"></div>
+
+        <header>
+            <div class="header-left">
+                <div class="status-indicator online"></div>
+                <h1>DRONE INTEL <span class="v-line">|</span> HUD-V1.0</h1>
+            </div>
+            <div class="header-right">
+                <span id="current-time">00:00:00</span>
+                <span class="location">LAT: 25.0330 / LON: 121.5654</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="control-panel">
+                <div class="panel-header">
+                    <h2>COMMAND CENTER</h2>
+                </div>
+                <div class="actions">
+                    <button id="start-scan" class="btn-primary">
+                        <span class="btn-text">INITIATE GLOBAL SCAN</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <div class="system-status">
+                        <div class="status-row">
+                            <span>SENSORS:</span> <span class="val">ACTIVE</span>
+                        </div>
+                        <div class="status-row">
+                            <span>AI CORE:</span> <span class="val" id="ai-status">WAITING</span>
+                        </div>
+                        <div class="status-row">
+                            <span>NETWORK:</span> <span class="val">SECURE</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="log-panel">
+                <div class="panel-header">
+                    <h2>SYSTEM LOG</h2>
+                </div>
+                <div id="terminal-log" class="terminal">
+                    <p class="log-entry">> System ready. Awaiting command...</p>
+                </div>
+            </section>
+
+            <section class="intel-panel">
+                <div class="panel-header">
+                    <h2>LATEST INTELLIGENCE</h2>
+                </div>
+                <div id="intel-grid" class="intel-grid">
+                    <!-- Intel items will be injected here -->
+                    <div class="intel-placeholder">
+                        <div class="scanner-line"></div>
+                        <p>AWAITING DATA INPUT...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-stats">
+                <span>CPU: 12%</span>
+                <span>MEM: 4.2GB</span>
+                <span>SCR: 25.1FPS</span>
+            </div>
+            <div class="branding">ANTIGRAVITY DEFENSE SYSTEMS</div>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

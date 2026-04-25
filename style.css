@@ -1,0 +1,244 @@
+:root {
+    --bg-color: #0a0c10;
+    --panel-bg: rgba(16, 20, 26, 0.85);
+    --accent-color: #00ff9d;
+    --alert-color: #ff9d00;
+    --text-dim: #8a9ba8;
+    --text-bright: #e1e8ed;
+    --border-color: rgba(0, 255, 157, 0.2);
+    --glow-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-bright);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.hud-container {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, #1a1d23 0%, #0a0c10 100%);
+}
+
+/* Scanlines Effect */
+.scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.1) 50%
+    ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.03)
+    );
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: blink 2s infinite;
+}
+
+.v-line {
+    color: var(--border-color);
+    margin: 0 10px;
+}
+
+.header-right {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: 250px 1fr;
+    gap: 20px;
+}
+
+.panel-header {
+    background: rgba(0, 255, 157, 0.05);
+    padding: 8px 15px;
+    border-left: 3px solid var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.panel-header h2 {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.control-panel, .log-panel, .intel-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+.intel-panel {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+/* Button Styling */
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: var(--glow-shadow);
+}
+
+.system-status {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.status-row .val {
+    color: var(--accent-color);
+}
+
+/* Terminal Styling */
+.terminal {
+    background: rgba(0, 0, 0, 0.3);
+    height: 150px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    overflow-y: auto;
+    color: #00cc7e;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+}
+
+/* Intel Grid */
+.intel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+.intel-placeholder {
+    grid-column: 1 / -1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--border-color);
+    border: 1px dashed var(--border-color);
+}
+
+.scanner-line {
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    animation: scan 4s linear infinite;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+/* Animations */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(500px); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}
