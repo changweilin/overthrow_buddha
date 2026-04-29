@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+
+crawler_project/logs/*.log
+!crawler_project/logs/.gitkeep
+
+data/intel_archive/index.json
+data/intel_archive/articles/*
+!data/intel_archive/articles/.gitkeep
+

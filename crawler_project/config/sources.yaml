@@ -1,0 +1,149 @@
+sources:
+  - name: Defense News Unmanned
+    type: rss
+    url: https://www.defensenews.com/arc/outboundfeeds/rss/category/unmanned/?outputType=xml
+    allowed_domains:
+      - www.defensenews.com
+      - defensenews.com
+    include_url_keywords: &drone_keywords
+      - unmanned
+      - drone
+      - drones
+      - uas
+      - uav
+      - ucav
+      - counter-drone
+      - counter-uas
+      - c-uas
+      - autonomous
+      - autonomy
+      - robotic
+      - robotics
+      - robot
+      - fpv
+      - loitering
+      - swarm
+      - swarming
+      - remotely piloted
+      - uncrewed
+      - unmanned ground
+      - unmanned surface
+      - underwater drone
+      - drone boat
+      - sea drone
+    media: &default_media
+      images: download
+      videos: link
+    delay_seconds: &default_delay
+      min: 8
+      max: 20
+
+  - name: Defense News Global
+    type: rss
+    url: https://www.defensenews.com/arc/outboundfeeds/rss/category/global/?outputType=xml
+    allowed_domains:
+      - www.defensenews.com
+      - defensenews.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Defense News Industry
+    type: rss
+    url: https://www.defensenews.com/arc/outboundfeeds/rss/category/industry/?outputType=xml
+    allowed_domains:
+      - www.defensenews.com
+      - defensenews.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Defense One All
+    type: rss
+    url: https://www.defenseone.com/rss/all/
+    allowed_domains:
+      - www.defenseone.com
+      - defenseone.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Army Technology
+    type: rss
+    url: https://www.army-technology.com/feed/
+    allowed_domains:
+      - www.army-technology.com
+      - army-technology.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Airforce Technology
+    type: rss
+    url: https://www.airforce-technology.com/feed/
+    allowed_domains:
+      - www.airforce-technology.com
+      - airforce-technology.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Naval Technology
+    type: rss
+    url: https://www.naval-technology.com/news/feed/
+    allowed_domains:
+      - www.naval-technology.com
+      - naval-technology.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Naval News
+    type: rss
+    url: https://www.navalnews.com/feed/
+    allowed_domains:
+      - www.navalnews.com
+      - navalnews.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Indian Defence News
+    type: rss
+    url: https://www.indiandefensenews.in/feeds/posts/default
+    allowed_domains:
+      - www.indiandefensenews.in
+      - indiandefensenews.in
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: European Defence Review
+    type: rss
+    url: https://www.edrmagazine.eu/feed/
+    allowed_domains:
+      - www.edrmagazine.eu
+      - edrmagazine.eu
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: Asian Military Review
+    type: rss
+    url: https://www.asianmilitaryreview.com/feed/
+    allowed_domains:
+      - www.asianmilitaryreview.com
+      - asianmilitaryreview.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay
+
+  - name: The War Zone
+    type: rss
+    url: https://www.twz.com/feed
+    allowed_domains:
+      - www.twz.com
+      - twz.com
+    include_url_keywords: *drone_keywords
+    media: *default_media
+    delay_seconds: *default_delay

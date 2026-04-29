@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爬蟲標題摘要檢視器</title>
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Analysis Project</p>
+        <h1>爬蟲標題摘要檢視器</h1>
+      </div>
+      <div class="meta-strip" aria-live="polite">
+        <span id="article-count">0 篇</span>
+        <span id="generated-at">尚未載入</span>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="control-rail" aria-label="檢視控制">
+        <label class="field">
+          <span>搜尋</span>
+          <input id="search-input" type="search" placeholder="標題、摘要、來源或 ID">
+        </label>
+
+        <label class="field">
+          <span>排序方法</span>
+          <select id="sort-select">
+            <option value="updated_desc">最近更新優先</option>
+            <option value="updated_asc">最早更新優先</option>
+            <option value="collected_desc">最近收集優先</option>
+            <option value="title_asc">標題 A-Z</option>
+            <option value="title_desc">標題 Z-A</option>
+            <option value="source_asc">來源 A-Z</option>
+            <option value="status_asc">摘要狀態</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>來源</span>
+          <select id="source-filter">
+            <option value="all">全部來源</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>摘要狀態</span>
+          <select id="status-filter">
+            <option value="all">全部狀態</option>
+          </select>
+        </label>
+
+        <div class="segmented" role="group" aria-label="顯示模式">
+          <button id="card-view" class="active" type="button" aria-pressed="true">卡片</button>
+          <button id="list-view" type="button" aria-pressed="false">列表</button>
+        </div>
+
+        <label class="file-loader">
+          <input id="file-loader" type="file" accept="application/json,.json">
+          <span>載入 index.json</span>
+        </label>
+
+        <p class="hint">若直接用檔案開啟，本頁會先使用 `archive_index.js`；也可手動載入 `data/intel_archive/index.json`。</p>
+      </section>
+
+      <section class="results-panel" aria-label="文章清單">
+        <div class="results-toolbar">
+          <div>
+            <strong id="result-count">0</strong>
+            <span>筆符合條件</span>
+          </div>
+          <button id="clear-filters" type="button">清除條件</button>
+        </div>
+        <div id="article-list" class="article-grid"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <strong>找不到符合條件的文章</strong>
+          <span>試著清除搜尋字或改變排序、篩選條件。</span>
+        </div>
+      </section>
+
+      <aside class="preview-panel" aria-label="文章預覽">
+        <div id="preview-empty" class="preview-empty">
+          <span>選取一篇文章</span>
+          <strong>右側會顯示預覽圖、標題與摘要</strong>
+        </div>
+
+        <article id="preview-card" class="preview-card" hidden>
+          <div class="preview-image-wrap">
+            <img id="preview-image" alt="">
+            <div id="preview-image-fallback" class="image-fallback" hidden>無預覽圖</div>
+          </div>
+          <div class="preview-content">
+            <div class="preview-meta">
+              <span id="preview-source"></span>
+              <span id="preview-status"></span>
+            </div>
+            <h2 id="preview-title"></h2>
+            <p id="preview-summary"></p>
+            <dl class="detail-list">
+              <div>
+                <dt>更新時間</dt>
+                <dd id="preview-updated"></dd>
+              </div>
+              <div>
+                <dt>收集時間</dt>
+                <dd id="preview-collected"></dd>
+              </div>
+              <div>
+                <dt>文章 ID</dt>
+                <dd id="preview-id"></dd>
+              </div>
+            </dl>
+            <div class="preview-actions">
+              <a id="open-url" href="#" target="_blank" rel="noreferrer">原文</a>
+              <a id="translate-full" href="#" target="_blank" rel="noreferrer">翻譯全文</a>
+              <a id="open-summary" href="#" target="_blank" rel="noreferrer">摘要檔</a>
+              <a id="open-original" href="#" target="_blank" rel="noreferrer">原始檔</a>
+            </div>
+          </div>
+        </article>
+      </aside>
+    </main>
+  </div>
+
+  <script src="archive_index.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>
